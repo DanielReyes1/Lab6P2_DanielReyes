@@ -3,6 +3,7 @@ package lab6p2_danielreyes;
 
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -828,7 +829,7 @@ public class Menu extends javax.swing.JFrame {
         Playlistt p;
         p = new Playlistt(textfield_nombreplaylist.getText(), usuariologeado.getUsername(), 0);
         listaplaylist.add(p);
-        JOptionPane.showMessageDialog(frameprincipalcliente, "Playlist"+ p.getNombre()+"creada con éxito");
+        JOptionPane.showMessageDialog(frameprincipalcliente, "Playlist "+ p.getNombre()+" creada con éxito");
         DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
         DefaultMutableTreeNode nodonombre = new DefaultMutableTreeNode(p);
@@ -850,15 +851,31 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTree1MouseClicked
 
     private void menuitem_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitem_eliminarActionPerformed
-        System.out.println(listaplaylist);
-        for (Playlistt p : listaplaylist) {
-            if(p.getNombre()== nodoselected.getUserObject()){
-                listaplaylist.remove(p);
+        
+        try {
+            for (Playlistt p : listaplaylist) {
+                if (nodoselected.getUserObject().equals(p)) {
+                    listaplaylist.remove(p);
+                }
             }
+            DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
+            modelo.removeNodeFromParent(nodoselected);
+            modelo.reload();
+            
+        } catch (ConcurrentModificationException e) {
+            for (Playlistt p : listaplaylist) {
+                if (nodoselected.getUserObject().equals(p)) {
+                    listaplaylist.remove(p);
+                }
+            }
+            DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
+            modelo.removeNodeFromParent(nodoselected);
+            modelo.reload();
         }
-        System.out.println("Nuevo");
-        System.out.println(listaplaylist);
-        nodoselected.removeFromParent();
+        
+        
     }//GEN-LAST:event_menuitem_eliminarActionPerformed
 
     private void Buttoningresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buttoningresar1MouseClicked
