@@ -4,6 +4,8 @@ package lab6p2_danielreyes;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -28,6 +30,10 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu_playlist = new javax.swing.JPopupMenu();
+        menuitem_agregar = new javax.swing.JMenuItem();
+        menuitem_modificar = new javax.swing.JMenuItem();
+        menuitem_eliminar = new javax.swing.JMenuItem();
         frame_signupdecision = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -69,7 +75,8 @@ public class Menu extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        textfield_nombre1 = new javax.swing.JTextField();
+        textfield_nombreplaylist = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -83,6 +90,15 @@ public class Menu extends javax.swing.JFrame {
         Button_login = new javax.swing.JButton();
         Button_signup = new javax.swing.JButton();
         Button_salir = new javax.swing.JButton();
+
+        menuitem_agregar.setText("Agregar Canción");
+        popupMenu_playlist.add(menuitem_agregar);
+
+        menuitem_modificar.setText("Modificar Nombre");
+        popupMenu_playlist.add(menuitem_modificar);
+
+        menuitem_eliminar.setText("Eliminar Playlist");
+        popupMenu_playlist.add(menuitem_eliminar);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -456,6 +472,15 @@ public class Menu extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setText("Nombre");
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setForeground(new java.awt.Color(204, 255, 204));
+        jButton2.setText("Agregar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -463,8 +488,9 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textfield_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textfield_nombreplaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(436, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -473,8 +499,10 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfield_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addComponent(textfield_nombreplaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(316, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nueva Playlist", jPanel6);
@@ -483,6 +511,11 @@ public class Menu extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Playlist");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTree1);
 
         jList1.setModel(new DefaultListModel());
@@ -736,6 +769,7 @@ public class Menu extends javax.swing.JFrame {
                 if(u.getContra().equals(pass)){
                     b = true;
                     actual = u;
+                    usuariologeado = u;
                 }
             }
         }
@@ -764,6 +798,31 @@ public class Menu extends javax.swing.JFrame {
         frameprincipalcliente.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        
+        Playlistt p;
+        p = new Playlistt(textfield_nombreplaylist.getText(), usuariologeado.getUsername(), 0);
+        JOptionPane.showMessageDialog(frameprincipalcliente, "Playlist"+ p.getNombre()+"creada con éxito");
+        DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
+        DefaultMutableTreeNode nodonombre = new DefaultMutableTreeNode(p.getNombre());
+        root.add(nodonombre);
+        modelo.reload();
+        
+        textfield_nombreplaylist.setText("");
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+        jTree1.setSelectionRow(jTree1.getClosestRowForLocation(evt.getX(), evt.getY()));
+        DefaultMutableTreeNode nodoactual = (DefaultMutableTreeNode)jTree1.getSelectionPath().getLastPathComponent();
+        nodoselected = nodoactual;
+        if(evt.getButton() == 3){
+            if(nodoselected.getUserObject() instanceof Playlistt){
+                popupMenu_playlist.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTree1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -816,6 +875,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JFrame frame_signupoyente;
     private javax.swing.JFrame frameprincipalcliente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -846,16 +906,22 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTree jTree1;
+    private javax.swing.JMenuItem menuitem_agregar;
+    private javax.swing.JMenuItem menuitem_eliminar;
+    private javax.swing.JMenuItem menuitem_modificar;
+    private javax.swing.JPopupMenu popupMenu_playlist;
     private javax.swing.JSpinner spinneredad;
     private javax.swing.JSpinner spinneredad2;
     private javax.swing.JTextField textfield_loginpassword;
     private javax.swing.JTextField textfield_loginuser;
     private javax.swing.JTextField textfield_nombre;
-    private javax.swing.JTextField textfield_nombre1;
+    private javax.swing.JTextField textfield_nombreplaylist;
     private javax.swing.JTextField textfield_password;
     private javax.swing.JTextField textfield_password1;
     private javax.swing.JTextField textfield_username;
     private javax.swing.JTextField textfield_username1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Usuario> listausuarios = new ArrayList();
+    Usuario usuariologeado;
+    DefaultMutableTreeNode nodoselected;
 }

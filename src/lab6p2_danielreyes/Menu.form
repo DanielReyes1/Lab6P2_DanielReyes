@@ -2,6 +2,29 @@
 
 <Form version="1.7" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Container class="javax.swing.JPopupMenu" name="popupMenu_playlist">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="menuitem_agregar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar Canci&#xf3;n"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="menuitem_modificar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar Nombre"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="menuitem_eliminar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar Playlist"/>
+          </Properties>
+        </MenuItem>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JFrame" name="frame_signupdecision">
 
       <Layout>
@@ -657,8 +680,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textfield_nombre1" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="textfield_nombreplaylist" min="-2" pref="318" max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="jButton2" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="436" max="32767" attributes="0"/>
                       </Group>
@@ -670,8 +694,10 @@
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="textfield_nombre1" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace pref="357" max="32767" attributes="0"/>
+                          <Component id="textfield_nombreplaylist" min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="316" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -685,7 +711,21 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="textfield_nombre1">
+                <Component class="javax.swing.JTextField" name="textfield_nombreplaylist">
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton2">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="ff" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Agregar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -742,6 +782,9 @@
                           <TreeModel code="Playlist&#xa;"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTree1MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
