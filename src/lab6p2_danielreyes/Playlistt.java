@@ -5,16 +5,24 @@ import java.util.ArrayList;
 
 
 public class Playlistt {
-    private String nombre;
+    private String nombre, usuario;
     private int likes;
     ArrayList<Cancion> listacanciones = new ArrayList();
 
     public Playlistt() {
     }
 
-    public Playlistt(String nombre, int likes) {
+    public Playlistt(String nombre, String usuario, int likes) {
         this.nombre = nombre;
         this.likes = likes;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getNombre() {
