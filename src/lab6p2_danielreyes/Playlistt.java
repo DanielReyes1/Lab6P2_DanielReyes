@@ -51,7 +51,7 @@ public class Playlistt {
 
     @Override
     public String toString() {
-        return "Playlistt{" + "nombre=" + nombre + ", likes=" + likes + ", listacanciones=" + listacanciones + '}';
+        return nombre;
     }
     
     

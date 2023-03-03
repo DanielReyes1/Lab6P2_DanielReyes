@@ -1,6 +1,7 @@
 
 package lab6p2_danielreyes;
 
+
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -71,8 +72,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         textfield_loginpassword = new javax.swing.JTextField();
         Buttoningresar = new javax.swing.JButton();
+        Buttoningresar1 = new javax.swing.JButton();
         frameprincipalcliente = new javax.swing.JFrame();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPaneListar = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         textfield_nombreplaylist = new javax.swing.JTextField();
@@ -98,6 +100,11 @@ public class Menu extends javax.swing.JFrame {
         popupMenu_playlist.add(menuitem_modificar);
 
         menuitem_eliminar.setText("Eliminar Playlist");
+        menuitem_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitem_eliminarActionPerformed(evt);
+            }
+        });
         popupMenu_playlist.add(menuitem_eliminar);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
@@ -409,6 +416,16 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Buttoningresar1.setBackground(new java.awt.Color(0, 0, 0));
+        Buttoningresar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Buttoningresar1.setForeground(new java.awt.Color(204, 255, 204));
+        Buttoningresar1.setText("Volver");
+        Buttoningresar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Buttoningresar1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -423,16 +440,18 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(285, 285, 285))))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Buttoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(textfield_loginpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                            .addGap(237, 237, 237)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textfield_loginuser, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textfield_loginpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textfield_loginuser, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(Buttoningresar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(39, 39, 39)
+                                .addComponent(Buttoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -449,7 +468,9 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textfield_loginpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addComponent(Buttoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buttoningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Buttoningresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(116, 116, 116))
         );
 
@@ -464,8 +485,8 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jTabbedPane1.setForeground(new java.awt.Color(204, 255, 204));
+        tabbedPaneListar.setBackground(new java.awt.Color(0, 0, 0));
+        tabbedPaneListar.setForeground(new java.awt.Color(204, 255, 204));
 
         jPanel6.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -505,7 +526,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(316, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Nueva Playlist", jPanel6);
+        tabbedPaneListar.addTab("Nueva Playlist", jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -542,7 +563,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
         );
 
-        jTabbedPane1.addTab("Listar/Editar/Eliminar Playlist", jPanel7);
+        tabbedPaneListar.addTab("Listar/Editar/Eliminar Playlist", jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -583,17 +604,17 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(231, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cerrar Sesión", jPanel8);
+        tabbedPaneListar.addTab("Cerrar Sesión", jPanel8);
 
         javax.swing.GroupLayout frameprincipalclienteLayout = new javax.swing.GroupLayout(frameprincipalcliente.getContentPane());
         frameprincipalcliente.getContentPane().setLayout(frameprincipalclienteLayout);
         frameprincipalclienteLayout.setHorizontalGroup(
             frameprincipalclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabbedPaneListar)
         );
         frameprincipalclienteLayout.setVerticalGroup(
             frameprincipalclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabbedPaneListar)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -777,10 +798,13 @@ public class Menu extends javax.swing.JFrame {
             if(actual instanceof Artista){
                 
             }else if (actual instanceof Cliente){
+                textfield_loginuser.setText("");
+                textfield_loginpassword.setText("");
                 frame_login.setVisible(false);
                 frameprincipalcliente.pack();
                 frameprincipalcliente.setLocationRelativeTo(this);
                 frameprincipalcliente.setVisible(true);
+                tabbedPaneListar.setSelectedComponent(jPanel7);
             }
         }else{
             JOptionPane.showMessageDialog(frame_login, "Usuario o contraseña invalido");
@@ -803,10 +827,11 @@ public class Menu extends javax.swing.JFrame {
         
         Playlistt p;
         p = new Playlistt(textfield_nombreplaylist.getText(), usuariologeado.getUsername(), 0);
+        listaplaylist.add(p);
         JOptionPane.showMessageDialog(frameprincipalcliente, "Playlist"+ p.getNombre()+"creada con éxito");
         DefaultTreeModel modelo = (DefaultTreeModel) jTree1.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
-        DefaultMutableTreeNode nodonombre = new DefaultMutableTreeNode(p.getNombre());
+        DefaultMutableTreeNode nodonombre = new DefaultMutableTreeNode(p);
         root.add(nodonombre);
         modelo.reload();
         
@@ -823,6 +848,25 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTree1MouseClicked
+
+    private void menuitem_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitem_eliminarActionPerformed
+        System.out.println(listaplaylist);
+        for (Playlistt p : listaplaylist) {
+            if(p.getNombre()== nodoselected.getUserObject()){
+                listaplaylist.remove(p);
+            }
+        }
+        System.out.println("Nuevo");
+        System.out.println(listaplaylist);
+        nodoselected.removeFromParent();
+    }//GEN-LAST:event_menuitem_eliminarActionPerformed
+
+    private void Buttoningresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buttoningresar1MouseClicked
+        textfield_loginuser.setText("");
+        textfield_loginpassword.setText("");
+        frame_login.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_Buttoningresar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -869,6 +913,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Button_signup;
     private javax.swing.JButton Buttoncrear_oyente;
     private javax.swing.JButton Buttoningresar;
+    private javax.swing.JButton Buttoningresar1;
     private javax.swing.JFrame frame_login;
     private javax.swing.JFrame frame_signupartista;
     private javax.swing.JFrame frame_signupdecision;
@@ -904,7 +949,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTree jTree1;
     private javax.swing.JMenuItem menuitem_agregar;
     private javax.swing.JMenuItem menuitem_eliminar;
@@ -912,6 +956,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popupMenu_playlist;
     private javax.swing.JSpinner spinneredad;
     private javax.swing.JSpinner spinneredad2;
+    private javax.swing.JTabbedPane tabbedPaneListar;
     private javax.swing.JTextField textfield_loginpassword;
     private javax.swing.JTextField textfield_loginuser;
     private javax.swing.JTextField textfield_nombre;
@@ -922,6 +967,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField textfield_username1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Usuario> listausuarios = new ArrayList();
+    ArrayList<Playlistt> listaplaylist= new ArrayList();
     Usuario usuariologeado;
     DefaultMutableTreeNode nodoselected;
+    
 }
